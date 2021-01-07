@@ -13,8 +13,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Size(max=100)
+
     @NotNull(message = "name no puede ser nulo")
+    @Size(max=100)
     private String name ;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category_id" ,orphanRemoval = true)

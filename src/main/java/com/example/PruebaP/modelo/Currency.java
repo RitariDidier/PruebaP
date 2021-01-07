@@ -13,18 +13,28 @@ public class Currency {
     @Id
     private int id;
 
-    @Size(max=3)
-    @NotNull(message = "shortname no debe ser nulo")
-    private char shortname;
 
-    @Size(max=100)
+    @NotNull(message = "shortname no debe ser nulo")
+    @Size(max=3)
+    private String shortname;
+
+
     @NotNull(message = "longname no debe ser nulo")
+    @Size(max=100)
     private String longname;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "currency_id" ,orphanRemoval = true)
     @JsonIgnoreProperties("currency")
     private List <Item> items;
+
+    public String getShortname() {
+        return shortname;
+    }
+
+    public void setShortname(String shortname) {
+        this.shortname = shortname;
+    }
 
     public Currency() {
     }
@@ -37,13 +47,7 @@ public class Currency {
         this.id = id;
     }
 
-    public char getShortname() {
-        return shortname;
-    }
 
-    public void setShortname(char shortname) {
-        this.shortname = shortname;
-    }
 
     public String getLongname() {
         return longname;

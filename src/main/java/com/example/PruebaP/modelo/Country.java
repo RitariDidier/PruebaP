@@ -16,7 +16,7 @@ public class Country {
 
     @Size(max=3)
     @NotNull(message = "shortname no debe ser nulo")
-    private char shortname;
+    private String shortname;
 
     @Size(max=100)
     @NotNull(message = "longname no debe ser nulo")
@@ -37,11 +37,11 @@ public class Country {
         this.id = id;
     }
 
-    public char getShortname() {
+    public String getShortname() {
         return shortname;
     }
 
-    public void setShortname(char shortname) {
+    public void setShortname(String shortname) {
         this.shortname = shortname;
     }
 

@@ -1,6 +1,10 @@
 package com.example.PruebaP.modelo;
 
+import com.example.PruebaP.servicios.CategoryServicio;
+import com.example.PruebaP.servicios.CountryServicio;
+import com.example.PruebaP.servicios.CurrencyServicio;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,26 +14,35 @@ import java.sql.Timestamp;
 @Entity
 public class Item {
 
+    @Autowired
+    private CurrencyServicio currencyServicio;
+
+    @Autowired
+    private CountryServicio countryServicio;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Size(max=100)
+
     @NotNull(message = "tittle no debe ser nulo")
+    @Size(max=100)
     private String tittle;
 
     @NotNull(message = "price no debe ser nulo")
     private double price;
 
-    @Size(max=1)
+
     @NotNull(message = "symbol no debe ser nulo")
-    private char symbol;
+    @Size(max=1)
+    private Character symbol;
 
     @NotNull(message = "created_at no debe ser nulo")
     private Timestamp created_at;
     private Timestamp modified_at;
 
     @ManyToOne
+    @NotNull(message = "Currency no debe ser nulo")
     @JoinColumn(name = "currency_id")
     @JsonIgnoreProperties("items")
     private Currency currency_id;
@@ -40,12 +53,14 @@ public class Item {
     private Category category_id;
 
     @ManyToOne
+    @NotNull(message = "Country no debe ser nulo")
     @JoinColumn(name = "country_id")
     @JsonIgnoreProperties("items")
     private Country country_id;
 
     public Item() {
     }
+
 
     public int getId() {
         return id;
@@ -75,7 +90,7 @@ public class Item {
         return symbol;
     }
 
-    public void setSymbol(char symbol) {
+    public void setSymbol(Character symbol) {
         this.symbol = symbol;
     }
 
