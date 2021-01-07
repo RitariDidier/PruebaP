@@ -45,9 +45,7 @@ public class ItemControlador {
         Map<String,Integer> map2 = new HashMap<String, Integer>();
         map2.put("id",iS.guardar(map).getId());
         //String msg = iS.guardar(map).getId()+"";
-
         return map2;
-
     }
 
 }
