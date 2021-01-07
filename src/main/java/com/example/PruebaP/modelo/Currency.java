@@ -11,30 +11,24 @@ import java.util.List;
 public class Currency {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
 
     @NotNull(message = "shortname no debe ser nulo")
     @Size(max=3)
-    private String shortname;
+    private String shortName;
 
 
     @NotNull(message = "longname no debe ser nulo")
     @Size(max=100)
-    private String longname;
+    private String longName;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "currency_id" ,orphanRemoval = true)
     @JsonIgnoreProperties("currency")
     private List <Item> items;
 
-    public String getShortname() {
-        return shortname;
-    }
-
-    public void setShortname(String shortname) {
-        this.shortname = shortname;
-    }
 
     public Currency() {
     }
@@ -47,14 +41,20 @@ public class Currency {
         this.id = id;
     }
 
-
-
-    public String getLongname() {
-        return longname;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setLongname(String longname) {
-        this.longname = longname;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public String getLongName() {
+        return longName;
+    }
+
+    public void setLongName(String longName) {
+        this.longName = longName;
     }
 
     public List<Item> getItems() {

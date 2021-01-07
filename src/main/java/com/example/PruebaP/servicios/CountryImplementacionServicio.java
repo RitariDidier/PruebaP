@@ -15,6 +15,6 @@ public class CountryImplementacionServicio implements CountryServicio{
 
     @Override
     public Country buscarxshortname(String shortname) {
-        return cyR.findByShortname(shortname).orElse(null);
+        return cyR.findByShortName(shortname).orElse(null);
     }
 }

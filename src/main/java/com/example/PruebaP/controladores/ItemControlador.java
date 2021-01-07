@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/Item")
 public class ItemControlador {
@@ -28,13 +30,19 @@ public class ItemControlador {
         return iS.borrarItemXId(id);
     }
 
+    @PutMapping("/act/{id}")
+    public Item actualizar(@PathVariable Integer id,@RequestBody Map<String, String> map){
+
+        return iS.actualizarItem(map, id);
+    }
+
+    @PostMapping("/agregar_item")
+    public String guardar (@RequestBody Map<String, String> map){
+
+        String msg = iS.guardar(map).getId()+"";
 
 
-    @PostMapping
-    public ResponseEntity <Item> save(@RequestBody Item item){
-
-        Item obj = iS.save(item);
-        return new ResponseEntity<Item>(obj, HttpStatus.OK);
+        return iS.guardar(map).getId()+"";
 
     }
 

@@ -14,6 +14,6 @@ public class CurrencyImplementacionServicio implements CurrencyServicio{
     @Override
     public Currency buscarxShortname(String shortname) {
 
-        return cR.findByShortname(shortname).orElse(null);
+        return cR.findByShortName(shortname).orElse(null);
     }
 }

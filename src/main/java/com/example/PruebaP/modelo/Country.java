@@ -16,11 +16,11 @@ public class Country {
 
     @Size(max=3)
     @NotNull(message = "shortname no debe ser nulo")
-    private String shortname;
+    private String shortName;
 
     @Size(max=100)
     @NotNull(message = "longname no debe ser nulo")
-    private String longname;
+    private String longName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "country_id" ,orphanRemoval = true)
     @JsonIgnoreProperties("country")
@@ -38,19 +38,19 @@ public class Country {
     }
 
     public String getShortname() {
-        return shortname;
+        return shortName;
     }
 
     public void setShortname(String shortname) {
-        this.shortname = shortname;
+        this.shortName = shortname;
     }
 
     public String getLongname() {
-        return longname;
+        return longName;
     }
 
     public void setLongname(String longname) {
-        this.longname = longname;
+        this.longName = longname;
     }
 
     public List<Item> getItems() {

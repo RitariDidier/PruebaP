@@ -14,12 +14,6 @@ import java.sql.Timestamp;
 @Entity
 public class Item {
 
-    @Autowired
-    private CurrencyServicio currencyServicio;
-
-    @Autowired
-    private CountryServicio countryServicio;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -34,7 +28,6 @@ public class Item {
 
 
     @NotNull(message = "symbol no debe ser nulo")
-    @Size(max=1)
     private Character symbol;
 
     @NotNull(message = "created_at no debe ser nulo")

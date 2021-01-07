@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface CurrencyRepositorio extends JpaRepository<Currency,Integer> {
 
-    Optional <Currency> findByShortname(String shortname);
+    Optional<Currency> findByShortName(String shortName);
 
 }
 
